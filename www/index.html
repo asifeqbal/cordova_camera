@@ -44,6 +44,8 @@
 
 <body>
     <div class="app">
+	<button id = "cameraTakePicture">TAKE PICTURE</button>
+	<img id = "myImage"></img>
         <h1>PhoneGap</h1>
         <div id="registration" class="blink">
             <p class="event waiting">Requesting Registration ID</p>
@@ -53,7 +55,28 @@
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript">
-        app.initialize();
+        document.addEventListener("deviceready", onDeviceReady, false);
+		function onDeviceReady()
+		{
+		document.getElementById("cameraTakePicture").addEventListener("click", cameraTakePicture); 
+		
+		function cameraTakePicture() { 
+		   navigator.camera.getPicture(onSuccess, onFail, {  
+			  quality: 50, 
+			  destinationType: Camera.DestinationType.DATA_URL 
+		   });  
+	   
+		   function onSuccess(imageData) { 
+			  var image = document.getElementById('myImage'); 
+			  image.src = "data:image/jpeg;base64," + imageData; 
+		   }  
+	   
+		   function onFail(message) { 
+			  alert('Failed because: ' + message); 
+		   } 
+		}
+		
+		}
     </script>
 </body>
 
