@@ -36,7 +36,7 @@
 	
 	
 	<div class="app">
-	<button id = "cameraTakePicture">TAKE PICTURE</button>
+	<button id = "cameraGetPicture">GET PICTURE</button>
 	<img id = "myImage"></img>
         <h1>PhoneGap</h1>
         <div id="registration" class="blink">
@@ -50,13 +50,14 @@
     <script type="text/javascript">
 		
 		document.addEventListener("deviceready",onDeviceReady,false);		
-		document.getElementById("cameraTakePicture").addEventListener("click", cameraTakePicture); 
+		//document.getElementById("cameraTakePicture").addEventListener("click", cameraTakePicture); 
 
 		function onDeviceReady(){
-		alert('Baal');
-			//document.getElementById("cameraTakePicture").addEventListener("click", cameraTakePicture); 
+		alert('Baal1');
+		//	document.getElementById("cameraTakePicture").addEventListener("click", cameraTakePicture); 
+			document.getElementById("cameraGetPicture").addEventListener("click", cameraGetPicture);
 		
-		function cameraTakePicture() { 
+	/*	function cameraTakePicture() { 
 		   navigator.camera.getPicture(onSuccess, onFail, {  
 			  quality: 50, 
 			  destinationType: Camera.DestinationType.DATA_URL 
@@ -72,7 +73,26 @@
 		   alert('sucess');
 			  alert('Failed because: ' + message); 
 		   } 
-		}
+		} */
+		
+		function cameraGetPicture() {
+			   navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
+				  destinationType: Camera.DestinationType.DATA_URL,
+				  sourceType: Camera.PictureSourceType.PHOTOLIBRARY
+			   });
+
+			function onSuccess(imageURL) {
+			alert('sucess');
+				  var image = document.getElementById('myImage');
+				  image.src = imageURL;
+			   }
+
+			function onFail(message) {
+			alert('fail');
+				  alert('Failed because: ' + message);
+			   }
+
+			}
 			
 		}
 
