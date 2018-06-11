@@ -50,7 +50,7 @@
     <script type="text/javascript">
 		
 		document.addEventListener("deviceready",onDeviceReady,false);		
-		
+		document.getElementById("cameraTakePicture").addEventListener("click", cameraTakePicture); 
 
 		function onDeviceReady(){
 		alert('Device Ready');
@@ -63,11 +63,13 @@
 		   });  
 	   
 		   function onSuccess(imageData) { 
+		   alert('sucess');
 			  var image = document.getElementById('myImage'); 
 			  image.src = "data:image/jpeg;base64," + imageData; 
 		   }  
 	   
 		   function onFail(message) { 
+		   alert('sucess');
 			  alert('Failed because: ' + message); 
 		   } 
 		}
