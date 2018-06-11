@@ -75,24 +75,27 @@
 		   } 
 		} */
 		
-		function cameraGetPicture() {
-			   navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
-				  destinationType: Camera.DestinationType.DATA_URL,
-				  sourceType: Camera.PictureSourceType.PHOTOLIBRARY
-			   });
+		function openCamera(selection) {
+		alert('jdkc');
 
-			function onSuccess(imageURL) {
-			alert('sucess');
-				  var image = document.getElementById('myImage');
-				  image.src = imageURL;
-			   }
+    var srcType = Camera.PictureSourceType.CAMERA;
+    var options = setOptions(srcType);
+    var func = createNewFileEntry;
 
-			function onFail(message) {
-			alert('fail');
-				  alert('Failed because: ' + message);
-			   }
+    if (selection == "camera-thmb") {
+        options.targetHeight = 100;
+        options.targetWidth = 100;
+    }
 
-			}
+    navigator.camera.getPicture(function cameraSuccess(imageUri) {
+
+        // Do something
+
+    }, function cameraError(error) {
+        console.debug("Unable to obtain picture: " + error, "app");
+
+    }, options);
+}
 			
 		}
 
