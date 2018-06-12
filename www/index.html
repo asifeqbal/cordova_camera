@@ -45,14 +45,12 @@
 			
 				function cameraTakePicture() {
 					alert('chek');
-				   navigator.camera.getPicture(onSuccess, onFail, { quality: 25,
-							destinationType: Camera.DestinationType.DATA_URL
-						});
+				   navigator.camera.getPicture(onSuccess, onFail, { quality: 50, destinationType: Camera.DestinationType.FILE_URI });
 
-						function onSuccess(imageData) {
-							alert('chek Success');
+						function onSuccess(imageURI) {
+							alert('chek success');
 							var image = document.getElementById('myImage');
-							image.src = "data:image/jpeg;base64," + imageData;
+							image.src = imageURI;
 						}
 
 						function onFail(message) {
