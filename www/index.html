@@ -1,107 +1,52 @@
-<!DOCTYPE html>
-<!--
-    Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
 
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
-
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
-    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
-    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
-    
-
-    <link rel="stylesheet" type="text/css" href="css/index.css" />
-    
-</head>
-
-<body>
-	
-	
-	<div class="app">
-	<button id = "cameraGetPicture">GET PICTURE</button>
-	<img id = "myImage"></img>
-        <h1>PhoneGap</h1>
-        <div id="registration" class="blink">
-            <p class="event waiting">Requesting Registration ID</p>
-            <p class="event received">Registered</p>
-        </div>
-    </div>
-       
+<link href="jquery/jquery.mobile-1.4.5.min.css" rel="stylesheet"/>
 	<script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>   
-    <script type="text/javascript">
-		
-		document.addEventListener("deviceready",onDeviceReady,false);		
-		//document.getElementById("cameraTakePicture").addEventListener("click", cameraTakePicture); 
-
-		function onDeviceReady(){
-		alert('Baal1');
-		//	document.getElementById("cameraTakePicture").addEventListener("click", cameraTakePicture); 
-			document.getElementById("cameraGetPicture").addEventListener("click", cameraGetPicture);
-		
-	/*	function cameraTakePicture() { 
-		   navigator.camera.getPicture(onSuccess, onFail, {  
-			  quality: 50, 
-			  destinationType: Camera.DestinationType.DATA_URL 
-		   });  
+<script type="text/javascript">
+	$(function(){
+alert("welcome");
+	 function camSucess(imgData){
+	 
+			$("#img_camPH").attr("src",imgData);
+	 
+	 }
+	 
+	 function camError(error){
 	   
-		   function onSuccess(imageData) { 
-		   alert('sucess');
-			  var image = document.getElementById('myImage'); 
-			  image.src = "data:image/jpeg;base64," + imageData; 
-		   }  
-	   
-		   function onFail(message) { 
-		   alert('sucess');
-			  alert('Failed because: ' + message); 
-		   } 
-		} */
+	   alert("error"+ error);
+	 }
+	 
+	 function accessCamera(){
+	 
+		var option ={
+				destinationType: Camera.DestinationType.FILE_URI,
+				sourceType: Camera.PictureSourceType.CAMERA
 		
-		function openCamera(selection) {
-		alert('jdkc');
+		};
+	  navigator.camera.getPicture(camSucess, camError, );
+	 }
 
-    var srcType = Camera.PictureSourceType.CAMERA;
-    var options = setOptions(srcType);
-    var func = createNewFileEntry;
+		$("#btn_camera").on("click", accessCamera);
+	});
 
-    if (selection == "camera-thmb") {
-        options.targetHeight = 100;
-        options.targetWidth = 100;
-    }
-
-    navigator.camera.getPicture(function cameraSuccess(imageUri) {
-
-        // Do something
-
-    }, function cameraError(error) {
-        console.debug("Unable to obtain picture: " + error, "app");
-
-    }, options);
-}
-			
-		}
-
-		
-    </script>
+</script>
+<script type="text/javascript" src="jquery/jquery.mobile-1.4.5.min.js"></script>
+<meta charset="utf-8">
+</head>
+<body>
+	<div data-role="page">
 	
-</body>
+		<div data-role="header">
+			<h1>Camera App</h1>	
+		</div>
+		<div class="ui-content">
+			<button id="btn_camera">Camera</button>
+			<img id="img_camPH">
+		</div>
 
+	</div>
+
+</body>
 </html>
