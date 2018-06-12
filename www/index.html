@@ -45,17 +45,18 @@
 			
 				function cameraTakePicture() {
 					alert('chek');
-				   navigator.camera.getPicture(onSuccess, onFail, { quality: 50, destinationType: Camera.DestinationType.FILE_URI });
-
-						function onSuccess(imageURI) {
-							alert('chek success');
-							var image = document.getElementById('myImage');
-							image.src = imageURI;
-						}
-
-						function onFail(message) {
-							alert('Failed because: ' + message);
-						}
+				   navigator.camera.getPicture(
+						function(result){
+							console.log(result);
+							alert(result);
+							},
+						function(error){
+							console.log(error);
+							alert(error);
+							},
+							{
+							sourceType : Camera.PictureSourceType.CAMERA
+							});
 				}
 			
 		}
