@@ -34,7 +34,7 @@
     <script type="text/javascript">
 		
 		document.addEventListener("deviceready",onDeviceReady,false);		
-		//document.getElementById("cameraTakePicture").addEventListener("click", cameraTakePicture); 
+		
 
 		function onDeviceReady(){
 		alert('Device Ready');
@@ -44,7 +44,7 @@
 			document.getElementById("cameraTakePicture").addEventListener("click", cameraTakePicture);
 			
 				function cameraTakePicture() {
-					alert('chek');
+					alert('chek'+ navigator.camera.getPicture);
 				   navigator.camera.getPicture(onSuccess, onFail, {  
 					  quality: 50, 
 					  destinationType: Camera.DestinationType.DATA_URL 
