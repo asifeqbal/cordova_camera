@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="css/index.css" />
 	<script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>   
+    <!-- <script type="text/javascript" src="js/index.js"></script>    -->
     <script type="text/javascript">
 		
 		document.addEventListener("deviceready",onDeviceReady,false);		
@@ -43,6 +43,7 @@
 		}
 		
 		function getPicture(){
+		alert('get picture');
 		  navigator.camera.getPicture(
 			function(imageURI){
 			 var image = document.getElementById('myImage');
@@ -68,15 +69,12 @@
 <body>
 	
 	
-	<div class="app">
-	<button id = "cameraButton" onclick="getPicture()">GET PICTURE</button>
-	<img id = "myImage"></img>
-        <h1>PhoneGap</h1>
-        <div id="registration" class="blink">
-            <p class="event waiting">Requesting Registration ID</p>
-            <p class="event received">Registered</p>
-        </div>
-    </div>
+	<h1>PhoneGamera</h1>
+	<button id="cameraButton" onclick="getPicture()">GET PICTURE</button>
+	<img id="myImage"></img>
+        
+        
+    
        
 	
 	
