@@ -44,7 +44,7 @@
 		
 		function getPicture(){
 		alert('get picture');
-		  navigator.camera.getPicture(
+		 /* navigator.camera.getPicture(
 			function(imageURI){
 			 var image = document.getElementById('myImage');
 			 image.src = imageURI;
@@ -58,7 +58,21 @@
 			  Quality:50,
 			  destinationType: Camera.DestinationType.FILE_URI
 			 }
-		  );
+		  );  */
+		  
+		  navigator.camera.getPicture(onSuccess, onFail, { quality: 50, destinationType: Camera.DestinationType.FILE_URI });
+
+		function onSuccess(imageURI) {
+		alert('sucess');
+			var image = document.getElementById('myImage');
+			image.src = imageURI;
+		}
+
+		function onFail(message) {
+		alert('error');
+			alert('Failed because: ' + message);
+		}
+
 		}
 
 		
