@@ -46,7 +46,8 @@
 		
 		function getPicture(){
 		alert('get picture');
-		 /* navigator.camera.getPicture(
+		 navigator.camera.getPicture(
+		 alert('check:' + navigator.camera);
 			function(imageURI){
 			 var image = document.getElementById('myImage');
 			 image.src = imageURI;
@@ -60,20 +61,9 @@
 			  Quality:50,
 			  destinationType: Camera.DestinationType.FILE_URI
 			 }
-		  );  */
+		  );  
 		  
-		  navigator.camera.getPicture(onSuccess, onFail, { quality: 25, destinationType: Camera.DestinationType.DATA_URL });
-
-			function onSuccess(imageData) {
-			alert('baal');
-				var image = document.getElementById('myImage');
-				image.src = "data:image/jpeg;base64," + imageData;
-			}
-
-			function onFail(message) {
-			alert('baal2');
-				alert('Failed because: ' + message);
-			}
+		 
 
 		}
 
@@ -85,7 +75,7 @@
 	
 	
 	<h1>PhoneGamera</h1>
-	<button id="getPicture">GET PICTURE</button>
+	<button id="getPicture" onclick="getPicture">GET PICTURE</button>
 	<img id="myImage"></img>
         
         
