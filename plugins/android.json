@@ -11,9 +11,6 @@
       "SENDER_ID": "XXXXXXX",
       "PACKAGE_NAME": "com.camera.app"
     },
-    "cordova-plugin-camera": {
-      "PACKAGE_NAME": "com.camera.app"
-    },
     "cordova-plugin-device": {
       "PACKAGE_NAME": "com.camera.app"
     },
