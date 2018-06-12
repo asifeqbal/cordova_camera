@@ -44,21 +44,20 @@
 			document.getElementById("cameraTakePicture").addEventListener("click", cameraTakePicture);
 			
 				function cameraTakePicture() {
-					alert('chek'+ navigator.camera.getPicture);
-				   navigator.camera.getPicture(onSuccess, onFail, {  
-					  quality: 50, 
-					  destinationType: Camera.DestinationType.DATA_URL 
-				   });  
-				   
-				   function onSuccess(imageData) {
-				   alert('chekk success');
-					  var image = document.getElementById('myImage'); 
-					  image.src = "data:image/jpeg;base64," + imageData; 
-				   }  
-				   
-				   function onFail(message) { 
-					  alert('Failed because: ' + message); 
-				   } 
+					alert('chek');
+				   navigator.camera.getPicture(onSuccess, onFail, { quality: 25,
+							destinationType: Camera.DestinationType.DATA_URL
+						});
+
+						function onSuccess(imageData) {
+							alert('chek Success');
+							var image = document.getElementById('myImage');
+							image.src = "data:image/jpeg;base64," + imageData;
+						}
+
+						function onFail(message) {
+							alert('Failed because: ' + message);
+						}
 				}
 			
 		}
