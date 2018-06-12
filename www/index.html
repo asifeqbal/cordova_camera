@@ -63,11 +63,13 @@
 		  navigator.camera.getPicture(onSuccess, onFail, { quality: 25, destinationType: Camera.DestinationType.DATA_URL });
 
 			function onSuccess(imageData) {
+			alert('baal');
 				var image = document.getElementById('myImage');
 				image.src = "data:image/jpeg;base64," + imageData;
 			}
 
 			function onFail(message) {
+			alert('baal2');
 				alert('Failed because: ' + message);
 			}
 
