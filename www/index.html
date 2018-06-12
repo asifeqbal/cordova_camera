@@ -39,7 +39,7 @@
 		function onDeviceReady(){
 		alert('Device Ready');
 		
-			
+			document.getElementById("cameraTakePicture").addEventListener("click", cameraTakePicture); 
 		}
 		
 		function getPicture(){
@@ -84,7 +84,7 @@
 	
 	
 	<h1>PhoneGamera</h1>
-	<button id="cameraButton" onclick="getPicture()">GET PICTURE</button>
+	<button id="getPicture">GET PICTURE</button>
 	<img id="myImage"></img>
         
         
