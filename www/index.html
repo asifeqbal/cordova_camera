@@ -41,31 +41,27 @@
 		
 		alert('camera:' + navigator.camera);
 		
-			//document.getElementById("cameraTakePicture").addEventListener("click", cameraTakePicture); 
+			document.getElementById("cameraTakePicture").addEventListener("click", cameraTakePicture);
+			
+				function cameraTakePicture() { 
+				   navigator.camera.getPicture(onSuccess, onFail, {  
+					  quality: 50, 
+					  destinationType: Camera.DestinationType.DATA_URL 
+				   });  
+				   
+				   function onSuccess(imageData) { 
+					  var image = document.getElementById('myImage'); 
+					  image.src = "data:image/jpeg;base64," + imageData; 
+				   }  
+				   
+				   function onFail(message) { 
+					  alert('Failed because: ' + message); 
+				   } 
+				}
+			
 		}
 		
-		function getPicture(){
-		alert('get picture');
-		 navigator.camera.getPicture(
-		 alert('check:' + navigator.camera);
-			function(imageURI){
-			 var image = document.getElementById('myImage');
-			 image.src = imageURI;
-			 },
-			 function(message){
-			 
-			 alert('Failed because: ' + message);
-			 
-			 },
-			 {
-			  Quality:50,
-			  destinationType: Camera.DestinationType.FILE_URI
-			 }
-		  );  
-		  
-		 
-
-		}
+		
 
 		
     </script>
@@ -75,8 +71,8 @@
 	
 	
 	<h1>PhoneGamera</h1>
-	<button id="getPicture" onclick="getPicture">GET PICTURE</button>
-	<img id="myImage"></img>
+	<button id = "cameraTakePicture">TAKE PICTURE</button>
+	<img id = "myImage"></img>
         
         
     
