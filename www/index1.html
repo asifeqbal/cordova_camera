@@ -37,32 +37,31 @@
 		
 
 		function onDeviceReady(){
-		alert('Device Ready');	
+		alert('Device Ready');
+		
+		alert('camera:' + navigator.camera);
+		
+			document.getElementById("cameraTakePicture").addEventListener("click", cameraTakePicture);
+			
+				function cameraTakePicture() {
+					alert('chek');
+				   navigator.camera.getPicture(
+						function(result){
+							console.log(result);
+							alert(result);
+							},
+						function(error){
+							console.log(error);
+							alert(error);
+							},
+							{
+							sourceType : Camera.PictureSourceType.CAMERA
+							});
+				}
 			
 		}
 		
-		function getPicture(){
-            alert('get picture');
-            alert('camera:'+ navigator.camera);
-            alert('camera:'+ navigator.camera.getPicture);
-            navigator.camera.getPicture(function (imageURI){
-                                        var image = document.getElementById('myImage');
-                                        image.src = imageURI;
-                                        },
-                                        
-                                        function (message){
-                                        
-                                        alert ('Failed because:' + message);
-                                        },
-                                        {
-                                        quality: 50,
-                                        destinationType: Camera.DestionationType.FILE_URI
-                                        
-                                        }	
-                                        
-                                        );                                        
-                                        
-        }
+		
 
 		
     </script>
@@ -72,10 +71,9 @@
 	
 	
 	<h1>PhoneGamera</h1>
-	<div class="app">
-	<button id = "cameraButton" onclick="getPicture()">TAKE PICTURE</button>
+	<button id = "cameraTakePicture">TAKE PICTURE</button>
 	<img id = "myImage"></img>
-    </div>
+        
         
     
        
