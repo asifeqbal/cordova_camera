@@ -41,29 +41,26 @@
 			
 		}
 		
-		function getPicture(){
-            alert('get picture');
-            alert('camera:'+ navigator.camera);
-            alert('camera:'+ navigator.camera.getPicture);
-            navigator.camera.getPicture(function (imageURI){
-                                        var image = document.getElementById('myImage');
-                                        image.src = imageURI;
-                                        },
-                                        
-                                        function (message){
-                                        
-                                        alert ('Failed because:' + message);
-                                        },
-                                        {
-                                        quality: 50,
-                                        destinationType: Camera.DestionationType.FILE_URI
-                                        
-                                        }	
-                                        
-                                        );                                        
-                                        
-        }
-
+		function cameraTakePicture() { 
+		alert('baal');
+		alert('camera:' + navigator.camera);
+		alert('camera:' + navigator.camera.getPicture);
+					   navigator.camera.getPicture(onSuccess, onFail, {  
+						  quality: 50, 
+						  destinationType: Camera.DestinationType.DATA_URL 
+					   });  
+					   
+					   function onSuccess(imageData) { 
+					   alert('sucess');
+						  var image = document.getElementById('myImage'); 
+						  image.src = "data:image/jpeg;base64," + imageData; 
+					   }  
+					   
+					   function onFail(message) { 
+						  alert('Failed because: ' + message); 
+					   } 
+					
+					}
 		
     </script>
 </head>
@@ -73,8 +70,8 @@
 	
 	<h1>PhoneGamera</h1>
 	<div class="app">
-	<button id = "cameraButton" onclick="getPicture()">TAKE PICTURE</button>
-	<img id = "myImage"></img>
+	<button id = "cameraTakePicture" onclick="cameraTakePicture()">TAKE PICTURE</button>
+<img id = "myImage"></img>
     </div>
         
     
